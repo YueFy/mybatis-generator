@@ -1,0 +1,65 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: generator
+  #模板引擎配置
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    cache: false
+    servlet:
+      content-type: text/html
+  #静态文件配置
+  resources:
+    static-locations: classpath:/static,classpath:/META-INF/resources,classpath:/templates/
+  #jdbc配置
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/generator?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    tomcat:
+      max-active: 20
+      initial-size: 1
+      max-wait: 60000
+      min-idle: 1
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+    dbcp2:
+      pool-prepared-statements: true
+      max-open-prepared-statements: 20
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+management:
+  server:
+    port: 8081
+  endpoints:
+    jmx:
+      exposure:
+        include: *
+    web:
+      exposure:
+        include: *
+  endpoint:
+    health:
+      show-details: always
+
+mybatis:
+  #模型所在的保命
+  type-aliases-package: com.test.generator.dao
+  #映射文件路径
+  mapper-locations: classpath:mapper/*Mapper.xml
