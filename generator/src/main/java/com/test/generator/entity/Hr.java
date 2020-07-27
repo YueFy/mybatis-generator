@@ -1,26 +1,32 @@
 package com.test.generator.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Entity
+@Table(name = "hr")
 public class Hr implements Serializable {
+    @Id
+    @Column(name = "id")
     private Integer id;
 
+    @Column(name = "name")
     private String name;
-
+    @Column(name = "phone")
     private String phone;
-
+    @Column(name = "telephone")
     private String telephone;
-
+    @Column(name = "address")
     private String address;
-
+    @Column(name = "enabled")
     private Boolean enabled;
-
+    @Column(name = "username")
     private String username;
-
+    @Column(name = "password")
     private String password;
-
+    @Column(name = "userface")
     private String userface;
-
+    @Column(name = "remark")
     private String remark;
 
     private static final long serialVersionUID = 1L;
