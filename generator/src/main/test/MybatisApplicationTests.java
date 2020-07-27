@@ -1,5 +1,3 @@
-package com.test.generator.test;
-
 import com.test.generator.dao.HrMapper;
 import com.test.generator.entity.Hr;
 import com.test.generator.jpa.HrJPA;
